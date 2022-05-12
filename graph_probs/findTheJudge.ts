@@ -11,16 +11,27 @@
  */
 
   function judgeSearch (n: number, trust: number[][]) {
-      // Lets try to map the edge list to an node-adjacency dictionary
-      const returnDict: any = {};
-      const visitedSet: Set<number> = new Set();
-      for (let edgeArr of trust) {
-        const [a, b] = edgeArr;
-        // returnDict[a] = [b]
-        visitedSet.add(b)
-        if ( visitedSet.has(b) && visitedSet.has(a) ) return edgeArr[a];
-      }
-      return -1;
+      // Use the information.. We have the n-number of people in the town.. 
+      // Create a hash-table where each is the key.
+      const likes: any = {}
+      const likedBy: any = {}
+      
+    for (let i = 1; i <= n; i++) {
+        likes[i] = 0
+        likedBy[i] = 0
+    }
+    for (let edgeArr of trust) {
+        likes[edgeArr[0]]++
+        likedBy[edgeArr[1]]++
+    }
+    let judge = '0';
+    for (let key in likes) {
+        if (likes[key] === 0) judge = key;
+    }
+    if (likedBy[judge] === n-1) return judge;
+    else return -1;
+
+
   }
 
 // console.log(judgeSearch(3, [[1,3],[2,3],[3,1]]));
