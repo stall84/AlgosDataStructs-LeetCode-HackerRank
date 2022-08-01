@@ -1,4 +1,4 @@
-import treeNodeArray from '../basic_binary_tree/index';
+import {Tree1, Tree2} from '../basic_binary_tree/index';
 import { TreeNode } from '../models/treeNode';
 
 // Starting at the root node. In this case the first element in the array, 'a'. log-out each value as it's traversed depth-first wise
@@ -9,7 +9,7 @@ function iterativeDFT(root: TreeNode): void {
     if (root === null) return;
     const stack = [root]; // Go ahead and push the root onto the stack.
 
-    treeNodeArray.map((ele:any) => console.log(ele))
+    Tree1.map((ele:any) => console.log(ele))
     while (stack.length > 0) {
         let current = stack.pop();
         if (current && current.val != undefined) console.log(current.val);
@@ -33,4 +33,4 @@ function recursiveDFT(root: TreeNode): void {
 
 }
 
-recursiveDFT(treeNodeArray[0])
+recursiveDFT(Tree1[0])

@@ -1,4 +1,4 @@
-import treeNodeArray from '../basic_binary_tree/index';
+import {Tree1, Tree2} from '../basic_binary_tree/index';
 import { TreeNode } from '../models/treeNode';
 
 /**
@@ -24,5 +24,5 @@ function treeIncludes(target: string, root: TreeNode): boolean {
 
 }
 
-console.log(treeIncludes('q', treeNodeArray[0]))            // FALSE
-console.log(treeIncludes('c', treeNodeArray[0]))            // TRUE
+console.log(treeIncludes('q', Tree1[0]))            // FALSE
+console.log(treeIncludes('c', Tree1[0]))            // TRUE

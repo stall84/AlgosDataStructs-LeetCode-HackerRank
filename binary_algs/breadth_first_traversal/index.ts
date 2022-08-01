@@ -1,5 +1,6 @@
-import treeNodeArray from '../basic_binary_tree/index';
+import {Tree1, Tree2} from '../basic_binary_tree/index';
 import { TreeNode } from '../models/treeNode';
+
 
 
 function iterativeBreadthFirstTraversal(root: TreeNode): TreeNode[] {
@@ -18,4 +19,4 @@ function iterativeBreadthFirstTraversal(root: TreeNode): TreeNode[] {
     return returnArr;
 }
 
-console.log('answer array : ', iterativeBreadthFirstTraversal(treeNodeArray[0]))
+console.log('answer array : ', iterativeBreadthFirstTraversal(Tree1[0]))
