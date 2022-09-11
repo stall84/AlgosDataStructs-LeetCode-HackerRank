@@ -51,6 +51,8 @@ print("digit_sum algo running: ", digit_sum(112))
 
 def powers(base, exponent):
 
+    assert base and exponent >= 0 and int(base) == base and int(
+        exponent) == exponent, 'Number must be a non-negative integer.'
     if (exponent == 0):
         return 1
     else:
