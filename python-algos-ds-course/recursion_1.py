@@ -47,3 +47,14 @@ def digit_sum(n):
 
 
 print("digit_sum algo running: ", digit_sum(112))
+
+
+def powers(base, exponent):
+
+    if (exponent == 0):
+        return 1
+    else:
+        return base * powers(base, exponent - 1)
+
+
+print("powers algo running: ", powers(2, 3))
