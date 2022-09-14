@@ -7,3 +7,4 @@
 - The first node in a linked list is called the *HEAD*
 - Each node has a *NEXT* property which is it's _pointer_
 - The last node in a LL points to *NONE*
+- Test
