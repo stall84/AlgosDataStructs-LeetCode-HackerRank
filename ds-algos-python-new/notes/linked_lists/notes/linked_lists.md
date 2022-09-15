@@ -36,3 +36,4 @@ head: {
 }
 ```
 - Notice again how the next pointer essentially _is_ the next node. or None if one doesn't exist (which would become the tail)
+
