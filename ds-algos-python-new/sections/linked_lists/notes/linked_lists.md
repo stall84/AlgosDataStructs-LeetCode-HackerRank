@@ -37,3 +37,9 @@ head: {
 ```
 - Notice again how the next pointer essentially _is_ the next node. or None if one doesn't exist (which would become the tail)
 
+
+### Notes: 
+<hr/>
+
+- Using OOP to create our Linked List and Nodes in the [exercises](linked_list.py) really enabled conceiving of the Linked List as a separate entity than it's nodes.. This helps in viewing the *HEAD* and *TAIL* properties (that we use to manipulate the list) as their own kind of property-pointers that can be used to make changes to the Linked List by manipulation of the nodes.
+
