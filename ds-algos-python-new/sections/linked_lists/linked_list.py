@@ -39,11 +39,11 @@ class LinkedList:
         if self.length == 0:
             return None
         temp = self.head
-        pre = self.head
+        prev = self.head
         while (temp.next):  # While next is not None (null)
-            pre = temp
+            prev = temp
             temp = temp.next
-        self.tail = pre
+        self.tail = prev
         self.tail.next = None
         self.length -= 1
         if self.length == 0:
@@ -56,15 +56,48 @@ class LinkedList:
         if self.length == 0:
             self.head = new_node
             self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
 
 
 my_list_1 = LinkedList(4)
 my_list_1.append(15)
+my_list_1.append(23)
 
-
+print('-'*40)
+print('\n')
+print('NODES:')
 my_list_1.print_list()
 
-print(my_list_1.pop())
-print(my_list_1.pop())
+print('\n')
+print('my_list length: ', my_list_1.length)
+print('\n')
+print('-'*40)
 
-print(my_list_1.length)
+my_list_1.prepend(100)
+
+print('\n')
+print('after prepend() length: ', my_list_1.length)
+print('\n')
+print('-'*40)
+
+print('\n')
+print('after prepend() NODES:')
+my_list_1.print_list()
+
+print('-'*40)
+print('\n')
+my_list_2 = LinkedList(1)
+print(my_list_2.pop())
+my_list_2.prepend(100)
+
+print('-'*40)
+print('\n')
+print('length: ', my_list_2.length)
+print('-'*40)
+print('\n')
+print('NODES:')
+
+my_list_2.print_list()
