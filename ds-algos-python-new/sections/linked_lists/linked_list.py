@@ -62,6 +62,32 @@ class LinkedList:
         self.length += 1
         return True
 
+    def pop_first(self):
+        # When list is empty (edge case 1)
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None  # I guess this makes sense..
+        self.length -= 1
+        if self.length == 0:
+            self.tail = None
+        return temp
+
+    def get(self, index):       # A little surprising we're going to be passing the index we want to get instead of the Node value.. But should be simpler operation
+        # Also note we're just observing or viewing the node we want to get .. we're not mutating the list by destructively returning the node.
+        if index < 0 or index >= self.length:
+            # This check will ensure that no negative index can be passed, and no index greater than the size of the list.
+            return None
+        else:
+            temp = self.head
+            # Convention holds if you are going to use the iterator variable in the loop (for instance print(i)). Then you'd use the
+            # conventional 'i' variable (for i in range(whatever)). However here we're not using the iterator at all, so we
+            # instead use an underscore for that iterator spot.
+            for _ in range(index):
+                temp = temp.next
+            return temp.value
+
 
 my_list_1 = LinkedList(4)
 my_list_1.append(15)
@@ -88,6 +114,9 @@ print('\n')
 print('after prepend() NODES:')
 my_list_1.print_list()
 
+print('\n')
+print('getting 2nd index node: ', my_list_1.get(2))
+
 print('-'*40)
 print('\n')
 my_list_2 = LinkedList(1)
@@ -97,8 +126,12 @@ my_list_2.prepend(100)
 print('-'*40)
 print('\n')
 print('length: ', my_list_2.length)
+
 print('-'*40)
 print('\n')
 print('NODES:')
-
 my_list_2.print_list()
+print('\n')
+print('popping_first :', my_list_2.pop_first())
+print('\n')
+print('length: ', my_list_2.length)
