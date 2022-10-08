@@ -86,7 +86,7 @@ class LinkedList:
             # instead use an underscore for that iterator spot.
             for _ in range(index):
                 temp = temp.next
-            return temp.value
+            return temp
 
 
 my_list_1 = LinkedList(4)

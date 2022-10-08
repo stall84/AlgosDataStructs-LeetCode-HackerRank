@@ -30,3 +30,4 @@ c1.left = f1;
 export const Tree1 = [a, b, c, d, e, f];
 export const Tree2 = [a, b, c, d, e, f];
 export const AltTree1 = [a1, b1, c1, d1, e1, f1];
+export const AltTree2 = [a1, b1, null, c1, d1, e1];
