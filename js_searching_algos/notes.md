@@ -18,3 +18,17 @@ else if (target > arr[mean/middle]) return search(right)
 else if (targget < arr[mean/middle]) return search(left)
 return -1
 ```
+
+### Naive String Search
+- What's crucial to take away from this O(n<sup>2</sup>) algorithm (that was missing for us prior) is that on the very first run of the loops, both elements are 0.. 
+- What this means is that checking the characters on the inner loop, you can easily write:
+```
+for (let i = 0; i < search.length; i++) {
+    for (let j = 0; j < target.length j++) {
+        if (search[i + j] !== target[j]) break
+        ... 
+    }
+}
+```
+- On the first run it will compare both first elements. however using i + j, on the subsequent runs, it will **look ahead** by the inner loops iterator 'amount'. 
+- See the [code here](naive_string_search.ts)
