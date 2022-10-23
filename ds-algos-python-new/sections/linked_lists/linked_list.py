@@ -74,7 +74,7 @@ class LinkedList:
             self.tail = None
         return temp
 
-    def get(self, index):       # A little surprising we're going to be passing the index we want to get instead of the Node value.. But should be simpler operation
+    def get(self, index):       # Pass the index you want to get.
         # Also note we're just observing or viewing the node we want to get .. we're not mutating the list by destructively returning the node.
         if index < 0 or index >= self.length:
             # This check will ensure that no negative index can be passed, and no index greater than the size of the list.
@@ -87,6 +87,35 @@ class LinkedList:
             for _ in range(index):
                 temp = temp.next
             return temp
+    # set_value could also be called 'modify()' or 'edit_node()' ..
+    # The next method insert() will actually go about creating a brand new node and resetting pointers
+
+    def set_value(self, index, value):
+        # For setting a value let's utilize the previously created get method to establish our temp-node location
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return None
+        # Use methods we already have for 1st and last element cases
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+
+        # Get the leftmost of the neighbor nodes so you can point it's next to the node being inserted (would not work with rightmost neighbor)
+        temp_left = self.get(index - 1)
+        # temp_right = self.get(index)
+        new_node = Node(value)
+        # By just swap-algoing these you save a method call (from temp_right) and assignment
+        new_node.next = temp_left.next
+        temp_left.next = new_node
+        self.length += 1
+        return True
 
 
 my_list_1 = LinkedList(4)
@@ -110,28 +139,12 @@ print('after prepend() length: ', my_list_1.length)
 print('\n')
 print('-'*40)
 
-print('\n')
-print('after prepend() NODES:')
 my_list_1.print_list()
-
-print('\n')
-print('getting 2nd index node: ', my_list_1.get(2))
-
+my_list_1.set_value(1, 5)
 print('-'*40)
-print('\n')
-my_list_2 = LinkedList(1)
-print(my_list_2.pop())
-my_list_2.prepend(100)
-
+my_list_1.print_list()
 print('-'*40)
-print('\n')
-print('length: ', my_list_2.length)
-
+my_list_1.insert(2, 9)
 print('-'*40)
-print('\n')
-print('NODES:')
-my_list_2.print_list()
-print('\n')
-print('popping_first :', my_list_2.pop_first())
-print('\n')
-print('length: ', my_list_2.length)
+print('after insert')
+my_list_1.print_list()
