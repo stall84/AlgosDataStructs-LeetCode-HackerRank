@@ -8,7 +8,7 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self,  value):
+    def __init__(self,  value: int):
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node
@@ -20,7 +20,7 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
 
-    def append(self, value):
+    def append(self, value: int):
         new_node = Node(value)
         # First test is the list empty
         if self.head is None:
@@ -51,7 +51,7 @@ class LinkedList:
             self.tail = None
         return temp.value
 
-    def prepend(self, value):
+    def prepend(self, value: int):
         new_node = Node(value)
         if self.length == 0:
             self.head = new_node
@@ -74,7 +74,7 @@ class LinkedList:
             self.tail = None
         return temp
 
-    def get(self, index):       # Pass the index you want to get.
+    def get(self, index: int):       # Pass the index you want to get.
         # Also note we're just observing or viewing the node we want to get .. we're not mutating the list by destructively returning the node.
         if index < 0 or index >= self.length:
             # This check will ensure that no negative index can be passed, and no index greater than the size of the list.
@@ -90,7 +90,7 @@ class LinkedList:
     # set_value could also be called 'modify()' or 'edit_node()' ..
     # The next method insert() will actually go about creating a brand new node and resetting pointers
 
-    def set_value(self, index, value):
+    def set_value(self, index: int, value: int):
         # For setting a value let's utilize the previously created get method to establish our temp-node location
         temp = self.get(index)
         if temp:
@@ -98,7 +98,7 @@ class LinkedList:
             return True
         return False
 
-    def insert(self, index, value):
+    def insert(self, index: int, value: int):
         if index < 0 or index > self.length:
             return None
         # Use methods we already have for 1st and last element cases
@@ -116,6 +116,32 @@ class LinkedList:
         temp_left.next = new_node
         self.length += 1
         return True
+
+    def remove(self, index: int):
+        # This is a great method for illustrating linked lists. Especially in the middle cases where you really
+        # see how without a node and a 'valid' next pointer.. the List doesn't really mean or do anything.
+        if index < 0 or index > self.length:
+            return None
+        if index == 0:
+            # temp = self.get(index)
+            # self.head = temp.next
+            # self.length -= 1
+            # return temp
+            return self.pop_first()
+        if index == self.length - 1:
+            # temp = self.get(index - 1)
+            # self.tail = temp
+            # temp.next = None
+            # self.length -= 1
+            # return temp.next
+            return self.pop()
+        else:
+            prev = self.get(index-1)
+            temp = prev.next
+            prev.next = temp.next
+            temp.next = None
+            self.length -= 1
+            return temp
 
 
 my_list_1 = LinkedList(4)
@@ -147,4 +173,12 @@ print('-'*40)
 my_list_1.insert(2, 9)
 print('-'*40)
 print('after insert')
+my_list_1.print_list()
+# map(lambda x: print(f'node: {x} -- next: {x.next} '), my_list_1)          # Our linked list isn't iterable .. thats why we created the print_list() method on it
+
+print('-'*40)
+my_list_1.remove(0)
+my_list_1.print_list()
+print('-'*40)
+my_list_1.remove(3)
 my_list_1.print_list()
