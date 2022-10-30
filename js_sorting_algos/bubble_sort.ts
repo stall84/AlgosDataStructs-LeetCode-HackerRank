@@ -54,6 +54,9 @@ console.log(`better_bubble_sort: ${start2 - start1}`)
 function fully_optimized_bubbler (arr: number[]): number[] {
     let noSwap;
     for (let i = arr.length; i > 0; i--) {
+        // IN an attempt to narrow the problem space .. let's start from the very end. this way we'll be able to skip over one comparison at the end, once we've moved the first
+        // iterations highest to the end. 
+        // Since we're switching the direciton of our outter loop. You have to reconfigure the inner loop to run while less than i-1
         noSwap = true;
         for (let j = 0; j < i - 1; j++) {
             if (arr[j] > arr[j+1]) {
