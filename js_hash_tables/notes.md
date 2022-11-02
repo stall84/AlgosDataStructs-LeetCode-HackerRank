@@ -20,3 +20,20 @@
 - See the following resources which show how using _prime numbers_ in the function, and the size of the storing-structure, lead to far less key-collisions. 
 - [Quora - Prime Number List/Array In Performant Hash Tables](https://www.quora.com/Does-making-array-size-a-prime-number-help-in-hash-table-implementation-Why)
 - [Blog - Why Do Hash Functions Use Prime Numbers](https://computinglife.wordpress.com/2008/11/20/why-do-hash-functions-use-prime-numbers/)
+
+#### Collisions
+- Collisions will happen even with huge storage structures (lists/arrays for storing the key-value pairs) and advanced hashing functions. 
+- Two of the fundamental/basic methods with dealing with collisions are: _**Separate Chaining**_ and _**Linear Probing**_
+- _**Separate Chaining**_ involves utilizing a (2nd) data structure at each index in the storage structure such as another _array_ or _list_, thereby allowing a more sophisticated or fine-grained 2nd lookup within the main storage structure. Rough pseudo-code would be: 
+```
+// Separate Chaining pseudocode
+
+store('salmon', '#88888') -> hash('salmon', 13) -> 4    // Store ['salmon', '#88888'] at index 4 in main array
+mainArray[4] -> [['salmon', '#88888'], ['purple', '#44444'], ...]
+find('salmon') -> hash('salmon', 13) -> 4   // Go to index 4 to loop over all key-values stored at index 4 to find salmon
+for (let pair of mainArray[4]) {
+    return pair['salmon']
+}
+// Loops through all the nested arrays stored at index 4 and returns the one with salmon as it's key
+```
+- _**Linear Probing**_ in it's basic form is limited by the number of available 'slots' in your storage structure / array. But it is implemented by *only storing 1 key-value pair at each index, when there is a collision, the key-value is stored by looking-forward(or backward) to find an empty slot/index*
