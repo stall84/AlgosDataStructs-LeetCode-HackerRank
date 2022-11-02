@@ -28,6 +28,21 @@ class HashTable {
         }
     }
 
+    public get(input: string): string | undefined {
+
+        let hashed = this._hash(input);
+        if (this.keyMap[hashed] != undefined) {
+            if (this.keyMap[hashed].length === 0) return undefined;
+            for (let pair of this.keyMap[hashed]){
+                if (pair[0] == input) return pair[1];
+                else {
+                    return undefined;
+                }
+            }
+        }
+        return undefined;
+    }
+
 }
 
 
@@ -38,5 +53,11 @@ test1.set('purple', '#99910')
 test1.set('orange', '#55930')
 test1.set('red', '#36780')
 test1.set('auburn', '#33230')
+test1.set('yellow', '#48209')
+test1.set('burgundy', '#72139')
+test1.set('burgundy2', '#82139')
 
 console.log(test1.keyMap)
+
+console.log(test1.get('red'))
+console.log(test1.get('purple'))
