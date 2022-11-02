@@ -13,3 +13,10 @@
 
 ### This course's implementation 
 - We'll consider a problem where we have a list of hex-code's and we want to organize them into a datastructure where we can store them by their english-name color.
+
+#### Hash Function Basics
+- To make our hash function _deterministic_, we will want to devise a way to guarantee an input always yields a particular output. 
+- For our implementation, and others I've seen where a _hash table_ is constructed, the hashing function will be expected to take in the key (in our case a string), _and_ the size of the list or array structure that is being used to store the key-value pairs. e.g. ```hashFunc('word to hash', 31) // note we use a prime number as the size of our internal list/array```
+- See the following resources which show how using _prime numbers_ in the function, and the size of the storing-structure, lead to far less key-collisions. 
+- [Quora - Prime Number List/Array In Performant Hash Tables](https://www.quora.com/Does-making-array-size-a-prime-number-help-in-hash-table-implementation-Why)
+- [Blog - Why Do Hash Functions Use Prime Numbers](https://computinglife.wordpress.com/2008/11/20/why-do-hash-functions-use-prime-numbers/)
