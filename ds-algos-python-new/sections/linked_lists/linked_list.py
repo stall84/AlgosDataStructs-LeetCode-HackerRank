@@ -133,6 +133,16 @@ class LinkedList:
             self.length -= 1
             return temp                 # Return the whole node, not just it's value field
 
+    def reverse(self):
+        temp = self.head                # Lets first swap Head and Tail
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next               # We will need 2 more variables to create a 'sliding window' as we iterate through the list
+        before = None                   # before will be None (null) to start
+        # for _ in range(self.length):    # Using an anonymous iterator (_). Loop through the list's nodes
+
+
+
 
 my_list_1 = LinkedList(4)
 my_list_1.append(15)
