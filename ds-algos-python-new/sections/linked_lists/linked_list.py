@@ -1,4 +1,3 @@
-from pickle import TRUE
 
 
 class Node:
@@ -123,25 +122,16 @@ class LinkedList:
         if index < 0 or index > self.length:
             return None
         if index == 0:
-            # temp = self.get(index)
-            # self.head = temp.next
-            # self.length -= 1
-            # return temp
             return self.pop_first()
         if index == self.length - 1:
-            # temp = self.get(index - 1)
-            # self.tail = temp
-            # temp.next = None
-            # self.length -= 1
-            # return temp.next
             return self.pop()
         else:
-            prev = self.get(index-1)
-            temp = prev.next
-            prev.next = temp.next
-            temp.next = None
+            prev = self.get(index-1)    # The get method is an O(n) method. To save on calculations after doing this once, we do 
+            temp = prev.next            # This instead of another get method call for temp
+            prev.next = temp.next       # This is the main swap, pointing the previous node to the one after the extracted one
+            temp.next = None            # Separate the removed node permanently from the list
             self.length -= 1
-            return temp
+            return temp.value           # Instead of returnin the node itself, return it's value field
 
 
 my_list_1 = LinkedList(4)
