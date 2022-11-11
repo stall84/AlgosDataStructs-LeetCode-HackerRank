@@ -131,7 +131,7 @@ class LinkedList:
             prev.next = temp.next       # This is the main swap, pointing the previous node to the one after the extracted one
             temp.next = None            # Separate the removed node permanently from the list
             self.length -= 1
-            return temp.value           # Instead of returnin the node itself, return it's value field
+            return temp                 # Return the whole node, not just it's value field
 
 
 my_list_1 = LinkedList(4)
