@@ -139,7 +139,12 @@ class LinkedList:
         self.tail = temp
         after = temp.next               # We will need 2 more variables to create a 'sliding window' as we iterate through the list
         before = None                   # before will be None (null) to start
-        # for _ in range(self.length):    # Using an anonymous iterator (_). Loop through the list's nodes
+        for _ in range(self.length):    # Using an anonymous iterator (_). Loop through the list's nodes
+            after = temp.next
+            temp.next = before          # THis is the specific 'flipping' of the next pointer from what was 'right-facing' to now backwards 'left/reversed-facing'
+            before = temp
+            temp = after
+
 
 
 
@@ -181,4 +186,11 @@ my_list_1.remove(0)
 my_list_1.print_list()
 print('-'*40)
 my_list_1.remove(3)
+my_list_1.print_list()
+
+print('-'*40)
+my_list_1.append(199)
+my_list_1.print_list()
+my_list_1.reverse()
+print('Reverse Finished...')
 my_list_1.print_list()
