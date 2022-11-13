@@ -13,7 +13,7 @@
 - _*Separate Chaining*_ : Utilizing a 2nd data structure within the address space (The list or array used for internally storing _addressing_ hashed key's and their values). So for instance if your hash function yields an address of _index_ 3, and there already exists a key-value pair stored at index 3, you create a 2nd list within index 3 to hold the now _2_ elements present there. 
 ``` internal_address_list = [ [], [], [('whatever', 4), ('stuff', 22), [('another', 292), ('yet_another', 143)], ...] ```
 - Notice we will likely use *tuples* when in python.. but the nested structure could be anything.. an array, another list, etc.
-- _*Linear Probing*_ (a.k.a. _'Open Addressing'_): This is essentially a _*look-ahead*_ method.. You _probe_ ahead (or behind) for an empty, unoccupied address spot. This has the upside of assuring only one address location is occupied, but the obvious drawback of being address-location intensive (you will need a lot of spots)
+- _*Linear Probing*_ (part of methodology called _'Open Addressing'_): This is essentially a _*look-ahead*_ method.. You _probe_ ahead (or behind) for an empty, unoccupied address spot. This has the upside of assuring only one address location is occupied, but the obvious drawback of being address-location intensive (you will need a lot of spots)
 
 #### Our Hash Table
 - We'll implement our own construct in the associated script.
