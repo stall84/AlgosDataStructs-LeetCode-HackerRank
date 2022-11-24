@@ -21,30 +21,20 @@ class Hash_Table:
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
 
-    def set_pair(self, key_value):
-        hashed = self.__hash(key_value[0])
-        if hashed:
-            # First lets create the 'chained' in inner-array for the index if not already created
-            if not self.data_map[hashed]:
-                # Create the inner array and initialize with the current key_value
-                # User a tuple as the inner wrapper type
-                self.data_map[hashed] = [(key_value[0], key_value[1])]
-                return True
-            else:
-                self.data_map[hashed].append((key_value[0], key_value[1]))
-                return True
-
-        else:
-            return False
+    def set_item(self, key, value):
+        index = self.__hash(key)
+        if self.data_map[index] == None:
+            self.data_map[index] = []
+        self.data_map[index].append([key, value])
 
     def get_value(self, key):
-        hashed = self.__hash(key)
-        if hashed:
-            if self.data_map[hashed]:
-                for ele in self.data_map[hashed]:
+        hashed_index = self.__hash(key)
+        if hashed_index:
+            if self.data_map[hashed_index]:
+                for ele in self.data_map[hashed_index]:
                     if ele[0] == key:
                         print('getting: ', ele ) 
-                        return self.data_map[hashed]
+                        return self.data_map[hashed_index]
                     else:
                         return False
             else:
