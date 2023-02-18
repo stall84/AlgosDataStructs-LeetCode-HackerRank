@@ -21,47 +21,33 @@ class Hash_Table:
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
 
-    def set_pair(self, key_value):
-        hashed = self.__hash(key_value[0])
-        if hashed:
-            # First lets create the 'chained' in inner-array for the index if not already created
-            if not self.data_map[hashed]:
-                # Create the inner array and initialize with the current key_value
-                # User a tuple as the inner wrapper type
-                self.data_map[hashed] = [(key_value[0], key_value[1])]
-                return True
-            else:
-                self.data_map[hashed].append((key_value[0], key_value[1]))
-                return True
+    def set_item(self, key, value):
+        index = self.__hash(key)
+        if self.data_map[index] == None:
+            self.data_map[index] = []
+        self.data_map[index].append([key, value])
 
-        else:
-            return False
-
-    def get_value(self, key):
-        hashed = self.__hash(key)
-        if hashed:
-            if self.data_map[hashed]:
-                for ele in self.data_map[hashed]:
-                    if ele[0] == key:
-                        print('getting: ', ele ) 
-                        return self.data_map[hashed]
-                    else:
-                        return False
-            else:
-                return False
-        else:
-            return False
+    def get_item(self, key):
+        hashed_index = self.__hash(key)
+        if self.data_map[hashed_index] is not None:
+            for ele in range(len(self.data_map[hashed_index])):
+                if self.data_map[hashed_index][ele][0] == key:
+                    print('getting: ', ele ) 
+                    return self.data_map[hashed_index][ele][1]
+                
+        return False
+        
 
 
 new_hash = Hash_Table()
 new_hash.print_table()
 print('-'*30)
-new_hash.set_pair(['apple', 'gorgonzola'])
-new_hash.set_pair(['bacon', 'mozerella'])
+new_hash.set_item('apple', 'gorgonzola')
+new_hash.set_item('bacon', 'mozerella')
 new_hash.print_table()
 print('-'*30)
-new_hash.set_pair(['peach', 'grunion'])
-new_hash.set_pair(['butter', 'humboldt'])
+new_hash.set_item('peach', 'grunion')
+new_hash.set_item('butter', 'humboldt')
 new_hash.print_table()
 # new_hash.get_value('peach')
-print(new_hash.get_value('peach'))
+print(new_hash.get_item('peach'))
