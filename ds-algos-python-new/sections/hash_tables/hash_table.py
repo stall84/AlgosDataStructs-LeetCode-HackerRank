@@ -27,31 +27,27 @@ class Hash_Table:
             self.data_map[index] = []
         self.data_map[index].append([key, value])
 
-    def get_value(self, key):
+    def get_item(self, key):
         hashed_index = self.__hash(key)
-        if hashed_index:
-            if self.data_map[hashed_index]:
-                for ele in self.data_map[hashed_index]:
-                    if ele[0] == key:
-                        print('getting: ', ele ) 
-                        return self.data_map[hashed_index]
-                    else:
-                        return False
-            else:
-                return False
-        else:
-            return False
+        if self.data_map[hashed_index] is not None:
+            for ele in range(len(self.data_map[hashed_index])):
+                if self.data_map[hashed_index][ele][0] == key:
+                    print('getting: ', ele ) 
+                    return self.data_map[hashed_index][ele][1]
+                
+        return False
+        
 
 
 new_hash = Hash_Table()
 new_hash.print_table()
 print('-'*30)
-new_hash.set_pair(['apple', 'gorgonzola'])
-new_hash.set_pair(['bacon', 'mozerella'])
+new_hash.set_item('apple', 'gorgonzola')
+new_hash.set_item('bacon', 'mozerella')
 new_hash.print_table()
 print('-'*30)
-new_hash.set_pair(['peach', 'grunion'])
-new_hash.set_pair(['butter', 'humboldt'])
+new_hash.set_item('peach', 'grunion')
+new_hash.set_item('butter', 'humboldt')
 new_hash.print_table()
 # new_hash.get_value('peach')
-print(new_hash.get_value('peach'))
+print(new_hash.get_item('peach'))
