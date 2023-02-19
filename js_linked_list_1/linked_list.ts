@@ -1,8 +1,8 @@
 
 
-class Node {
+class LLNode {
     public val: any;
-    public next: Node | null;
+    public next: LLNode | null;
     constructor(val: any) {
         this.val = val;
         this.next = null;
