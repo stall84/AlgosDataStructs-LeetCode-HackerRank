@@ -8,7 +8,7 @@ class HashTable {
         this.keyMap = new Array(size)
     }
 
-    private _hash(input:string): number {
+    private _hash(input: string): number {
         let total = 0;
         const selectPrime = 31;
         for (let i = 0; i < Math.min(input.length, 100); i++) {
@@ -33,7 +33,7 @@ class HashTable {
         let hashed = this._hash(input);
         if (this.keyMap[hashed] != undefined) {
             if (this.keyMap[hashed].length === 0) return undefined;
-            for (let pair of this.keyMap[hashed]){
+            for (let pair of this.keyMap[hashed]) {
                 if (pair[0] == input) return pair[1];
                 else {
                     return undefined;
@@ -61,3 +61,5 @@ console.log(test1.keyMap)
 
 console.log(test1.get('red'))
 console.log(test1.get('purple'))
+
+export { }
