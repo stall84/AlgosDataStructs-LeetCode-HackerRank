@@ -58,10 +58,10 @@ class SinglyLinkedList {
             }
             previous.next = null;
             this.tail = previous;
+            this.length -= 1;
             return temp;
         }
 
-        this.length -= 1;
     }
 }
 
