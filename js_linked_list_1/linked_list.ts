@@ -55,6 +55,7 @@ class SinglyLinkedList {
             let temp = this.head.next;
             while (temp!.next != null) {
                 previous = previous.next!;
+                temp = temp!.next;
             }
             previous.next = null;
             this.tail = previous;
@@ -68,13 +69,14 @@ class SinglyLinkedList {
 const test1 = new SinglyLinkedList();
 
 test1.push(3);
-console.log(test1);
+console.log('log1: ', test1);
 test1.push(5);
 test1.push(44)
-console.log(test1)
+test1.push(55);
+console.log('log2: ', test1)
 const bertpop = test1.pop();
 console.log('bertpop: ', bertpop);
-console.log(test1);
+console.log('log3: ', test1);
 
 
 export { }
