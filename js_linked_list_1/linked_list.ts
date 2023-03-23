@@ -43,8 +43,8 @@ class SinglyLinkedList {
         return this;        // I'm not sure why we are returning the pushed-onto list from this method.. Other than if we might want to chain methods later on
     }
 
-    pop(): LLNode | null {
-        if (!this.head) return null;
+    pop(): LLNode | null | undefined {
+        if (!this.head) return undefined;
         if (this.head === this.tail) {
             const temp = this.head;
             this.tail = null;
@@ -72,6 +72,9 @@ console.log(test1);
 test1.push(5);
 test1.push(44)
 console.log(test1)
+const bertpop = test1.pop();
+console.log('bertpop: ', bertpop);
+console.log(test1);
 
 
 export { }
