@@ -49,11 +49,12 @@ class SinglyLinkedList {
             const temp = this.head;
             this.tail = null;
             this.head = null;
+            this.length -= 1;
             return temp;
         } else {
             let previous = this.head;
             let temp = this.head.next;
-            while (temp!.next != null) {
+            while (temp!.next) {
                 previous = previous.next!;
                 temp = temp!.next;
             }
@@ -77,6 +78,12 @@ console.log('log2: ', test1)
 const bertpop = test1.pop();
 console.log('bertpop: ', bertpop);
 console.log('log3: ', test1);
-
-
+const flerppop = test1.pop();
+console.log('flerppop: ', flerppop);
+const derppop = test1.pop();
+console.log('derppop: ', derppop);
+console.log('4th log: ', test1)
+const laspop = test1.pop();
+console.log('laspop: ', laspop);
+console.log('5th log: ', test1);
 export { }
