@@ -82,15 +82,15 @@ class SinglyLinkedList {
     }
 
     unshift(newValue: number): SinglyLinkedList {
+        const newNode = new LLNode(newValue);
         if (!this.head) {
-            this.head = new LLNode(newValue);
+            this.head = newNode;
             this.tail = this.head;
             this.length += 1;
             return this;
         }
-        const temp = this.head;
-        this.head = new LLNode(newValue);
-        this.head.next = temp;
+        newNode.next = this.head;
+        this.head = newNode;
         this.length += 1;
         return this;
     }
@@ -115,4 +115,11 @@ console.log('4th log: ', test1)
 const laspop = test1.pop();
 console.log('laspop: ', laspop);
 console.log('5th log: ', test1);
+
+const test2 = new SinglyLinkedList();
+test2.push(15);
+test2.push(10);
+console.log('test2: ', test2)
+test2.unshift(30);
+console.log('test2 after unshift: ', test2);
 export { }
