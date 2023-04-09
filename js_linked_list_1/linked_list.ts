@@ -63,7 +63,36 @@ class SinglyLinkedList {
             this.length -= 1;
             return temp;
         }
+    }
 
+    shift(): LLNode | null | undefined {
+        if (!this.head) return undefined;
+        if (this.head === this.tail) {
+            const temp = this.head;
+            this.tail === null;
+            this.head === null;
+            this.length -= 1;
+            return temp;
+        } else {
+            const temp = this.head;
+            this.head = this.head.next;
+            this.length -= 1
+            return temp;
+        }
+    }
+
+    unshift(newValue: number): SinglyLinkedList {
+        if (!this.head) {
+            this.head = new LLNode(newValue);
+            this.tail = this.head;
+            this.length += 1;
+            return this;
+        }
+        const temp = this.head;
+        this.head = new LLNode(newValue);
+        this.head.next = temp;
+        this.length += 1;
+        return this;
     }
 }
 
